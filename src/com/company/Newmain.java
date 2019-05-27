@@ -151,6 +151,13 @@ public class Newmain {
                         int number_cl = Integer.parseInt(str_params.get(1));
                         alpha.getFileClients(number_cl);
                     }
+                },
+                new Command("sort-trans") {
+                    @Override
+                    public void execute(List<String> str_params) throws IOException, InterruptedException, CustomerNotFoundException {
+                        alpha.sortTransactions();
+
+                    }
                 }
         };
 

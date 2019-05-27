@@ -128,6 +128,10 @@ public class Bank {
         clients.forEach(System.out::println);
     }
 
+    public void sortTransactions(){
+        transactions.sort(new ComparatorTrans());
+        transactions.forEach(System.out::println);
+    }
 
     public Client delClient(String ident) {
         UUID cl = UUID.fromString(ident);
