@@ -11,6 +11,12 @@ import java.util.Scanner;
 public class Test {
 
     public static void main(String[] args) throws IOException {
+
+        try {
+
+        }catch (Exception s){
+
+        }
         List<String> some = Arrays.asList("hello wha u gonna do".split(" "));
         some.forEach(System.out::println);
         Bank alpha = new Bank();

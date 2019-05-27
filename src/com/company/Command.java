@@ -14,5 +14,5 @@ abstract class Command {
         return name;
     }
 
-    public abstract void execute(List<String> str_params) throws IOException, InterruptedException;
+    public abstract void execute(List<String> str_params) throws IOException, InterruptedException, CustomerNotFoundException;
 }

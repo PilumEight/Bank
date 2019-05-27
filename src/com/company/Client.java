@@ -16,11 +16,11 @@ public class Client implements Comparator<Client> {
 
     @Override
     public String toString() {
-        return "Client{" +
-                "uuid=" + uuid +
-                ", name='" + name + '\'' +
-                ", balance=" + balance +
-                '}';
+        return "Client" +
+                " " + uuid +
+                " " + name +
+                " " + balance +
+                " " + '\n';
     }
 
 

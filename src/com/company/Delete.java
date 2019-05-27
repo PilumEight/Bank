@@ -5,11 +5,20 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Delete {
     public static void main(String[] args) throws IOException {
        // List<String> delete = new ArrayList<>("asdsad", "asdd");
-        String s = "asdasd asdd lalalla";
+        BufferedReader file_reader3 = new BufferedReader(new FileReader("client.txt"));
+        String file_str = file_reader3.readLine();
+        Stream<String> lines = file_reader3.lines();
+        lines.collect(Collectors.toList());
+        lines.forEach(s -> System.out.println(s));
+        String s = "asdasd + " + "\n" + " asdd LLLLllla" + "\n" + " asdDDDDDDDlla" + "\n" + " aSSSSSlla";
+        List<String> all_cl = new ArrayList<String>(Arrays.asList(s.split("\n")));
+        System.out.println(all_cl.get(3));
 /*
         List<String> myList = new ArrayList<String>(Arrays.asList(s.split(" ")));
         myList.remove(0);

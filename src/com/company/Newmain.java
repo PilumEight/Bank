@@ -5,14 +5,16 @@ import java.io.*;
 import java.util.*;
 
 public class Newmain {
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException, InterruptedException, CustomerNotFoundException {
         System.out.println("Ya rabotau");
         Bank alpha = new Bank();
-        Client jora = new Client("Jora", 100);
-        Client sanya = new Client("Sanya", 100);
+        Client kenny = new Client("Kenny", 7000);
+        Client jora = new Client("Jora", 5000);
+        Client sanya = new Client("Sanya", 2000);
         Transaction sj = new Transaction(jora,sanya, 50, 0);
         alpha.addClient(jora);
         alpha.addClient(sanya);
+        alpha.addClient(kenny);
         alpha.addTransaction(sj);
         alpha.getTransactions();
         //add-transaction 2755f859-a53f-496c-a0c0-66f610b85d43 3c4f38f8-01ad-4bef-969d-91c73cbf6c52 100 0
@@ -60,12 +62,12 @@ public class Newmain {
                 new Command("print-customers") {
                     @Override
                     public void execute(List<String> str_params) {
-                        alpha.sortClients();
+                        alpha.printClients();
                     }
                 },
                 new Command("add-transaction") {
                     @Override
-                    public void execute(List<String> str_params) {
+                    public void execute(List<String> str_params) throws CustomerNotFoundException {
                         System.out.println("Исполняется add-transaction");
                         HashMap<Integer, Client> loc_clients = new HashMap<Integer, Client>();
                         UUID up_client = UUID.fromString(str_params.get(1));
@@ -123,6 +125,31 @@ public class Newmain {
                     @Override
                     public void execute(List<String> str_params) throws IOException {
                         alpha.delClient(str_params.get(1));
+                    }
+                },
+                new Command("print-sort-by-name") {
+                    @Override
+                    public void execute(List<String> str_params) throws IOException, InterruptedException, CustomerNotFoundException {
+                        alpha.sortbyName();
+                    }
+                },
+                new Command("print-sort-by-balance") {
+                    @Override
+                    public void execute(List<String> str_params) throws IOException, InterruptedException, CustomerNotFoundException {
+                        alpha.sortClients();
+                    }
+                },
+                new Command("add-to-file-customers") {
+                    @Override
+                    public void execute(List<String> str_params) throws IOException, InterruptedException, CustomerNotFoundException {
+                        alpha.setFileClients();
+                    }
+                },
+                new Command("get-from-file-customer") {
+                    @Override
+                    public void execute(List<String> str_params) throws IOException, InterruptedException, CustomerNotFoundException {
+                        int number_cl = Integer.parseInt(str_params.get(1));
+                        alpha.getFileClients(number_cl);
                     }
                 }
         };
